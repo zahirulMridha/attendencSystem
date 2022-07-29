@@ -1,3 +1,4 @@
+// TODO: model correction
 const userSchema = {
   name: {
     type: String,
@@ -21,6 +22,7 @@ const userSchema = {
     type: String,
     required: true,
     minlength: [6, "is too short"],
+    // TODO: password minlength is not work
   },
   roles: {
     type: [String],
