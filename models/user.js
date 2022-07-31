@@ -1,5 +1,5 @@
-// TODO: model correction
-const userSchema = {
+const mongoose = require("mongoose");
+const userSchema = mongoose.Schema({
   name: {
     type: String,
     required: [true, "User name required"],
@@ -18,11 +18,10 @@ const userSchema = {
       message: (props) => `${props.value} is not a valid email!`,
     },
   },
+
   password: {
     type: String,
-    required: true,
-    minlength: [6, "is too short"],
-    // TODO: password minlength is not work
+    required: [true, "password required"],
   },
   roles: {
     type: [String],
@@ -35,6 +34,8 @@ const userSchema = {
     required: true,
     default: "PENDING",
   },
-};
+});
 
-module.exports = userSchema;
+const User = mongoose.model("User", userSchema);
+
+module.exports = User;

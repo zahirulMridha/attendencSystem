@@ -21,14 +21,13 @@ const authRegService = async ({ name, email, password, accountStatus }) => {
   }));
 };
 // TODO: create a userFindByProperty that work both way id or email
-const authLogService = async ( email, password ) => {
+const authLogService = async (email, password) => {
   // user = find user with email
   let user = await userService.userFindByEmail(email);
   // if user not found:   return 400 error
   if (!user) {
     throw error(400, "you have no account");
   }
-
   // if password not equal to user hash: return 400 error
   const comparePassword = await bcrypt.compare(password, user.password);
   if (!comparePassword) {

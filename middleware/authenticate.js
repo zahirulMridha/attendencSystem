@@ -14,15 +14,15 @@ const authenticate = async (req, _res, next) => {
     // token decode (token code -> user info)
     const decode = await jwt.verify(token, "secret");
     // matching user into db
-    console.log("auth");
-    user = userService.userFindById("_id", decode._id);
-  } catch (err) {
+    user = await userService.userFindById("_id", decode._id);
     if (!user) {
       throw error(400, "token is not matching");
     }
+  } catch (err) {
     next(err);
   }
   req.user = user;
+  // console.log(user);
   next();
 };
 module.exports = authenticate;

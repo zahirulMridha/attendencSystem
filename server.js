@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const mongoose = require("mongoose");
+const conncteToDb = require("./db");
 const router = require("./routes/index");
 const authenticate = require("./middleware/authenticate");
 
@@ -30,14 +30,15 @@ app.use((err, _req, res, _next) => {
 });
 
 // server
-mongoose
-  .connect("mongodb://127.0.0.1:27017/test", { serverSelectionTimeoutMS: 1000 })
+conncteToDb("mongodb://127.0.0.1:27017/test", {
+  serverSelectionTimeoutMS: 1000,
+})
   .then(() => {
-    console.log("connect to the mongodb");
+    console.log("connected to the mongoDb");
     app.listen(4000, () => {
       console.log(" listening server");
     });
   })
-  .catch((e) => {
-    console.log("there was server connection problem");
+  .catch((err) => {
+    console.log("there was server connection problem", err);
   });

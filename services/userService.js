@@ -1,4 +1,4 @@
-const User = require("../db");
+const User = require("../models/user");
 
 const userFindById = (key, id) => {
   return User.findById({ [key]: id });

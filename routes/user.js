@@ -13,7 +13,7 @@ const createController = require("../controller/authController");
 - 5 Delete User  /users/userId
 */
 /*
-//  TODO: get users have some works
+//  TODO: get users have filtering works depend on frontend
 - [ ] Update security
 - [ ]  filter
 - [ ]  sort

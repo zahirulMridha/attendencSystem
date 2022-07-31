@@ -1,9 +1,7 @@
 const mongoose = require("mongoose");
-const  {Schema}  = mongoose;
-const userSchema = require("./models/user");
 
-const schema = new mongoose.Schema(userSchema);
+const conncteToDb = (connectString, option) => {
+  return mongoose.connect(connectString, option);
+};
 
-const User = mongoose.model("User", schema);
-
-module.exports = User;
+module.exports = conncteToDb;
