@@ -6,6 +6,6 @@ working by fllowing steps.....
 *create schema and model 
 *create their shudo code
 *crete route***
-*crete controller**
+*craete controller**
 *create service**
 *and others
